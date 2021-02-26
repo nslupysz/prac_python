@@ -1,8 +1,9 @@
-import requests
-from bs4 import BeautifulSoup
+from seek import max_page, extract_jobs
+from save import save_to_file
 
-url = "https://www.seek.co.nz/react-jobs/in-auckland"
+end_page = max_page()
 
-r = requests.get(url)
-soup = BeautifulSoup(r.text, "html.parser")
-print(soup.get_text())
+jobs = extract_jobs(end_page)
+
+save_to_file(jobs)
+
